@@ -26,24 +26,16 @@ pipeline {
                 script {
                     
                     if (env.BRANCH_NAME=="feature") {
-                        sh '''
-                        docker-compose down
-                        docker-compose up -d dev
-                        '''
+                        sh 'docker-compose up -d dev'
                     }
 
                     else if (env.BRANCH_NAME == "develop") {
-                        sh '''
-                        docker-compose down
-                        docker-compose up -d qa
-                        '''
+                        sh 'docker-compose up -d qa'
+                        
                     }
 
                     else if (env.BRANCH_NAME == "main") {
-                        sh '''
-                        docker-compose down
-                        docker-compose up -d uat
-                        '''
+                        sh 'docker-compose up -d uat'
                     }
                 }
             }
