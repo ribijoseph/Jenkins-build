@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return jsonify({"message": "Jenkins build is successful in uat"})
+    return jsonify({"message": "Jenkins build is successful in new uat"})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
