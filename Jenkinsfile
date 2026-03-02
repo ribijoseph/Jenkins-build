@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Checkout') {
             steps {
@@ -26,15 +26,16 @@ pipeline {
                 script {
                     
                     if (env.BRANCH_NAME=="feature") {
-                        sh 'docker-compose up -d dev'
+                        sh 'docker-compose up -d --build dev'
                     }
 
                     else if (env.BRANCH_NAME == "develop") {
-                        sh 'docker-compose up -d qa'
+                        sh 'docker-compose up -d --build qa'
+                        
                     }
 
                     else if (env.BRANCH_NAME == "main") {
-                        sh 'docker-compose up -d uat'
+                        sh 'docker-compose up -d --build uat'
                     }
                 }
             }
